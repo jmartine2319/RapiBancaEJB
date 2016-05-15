@@ -5,6 +5,7 @@
  */
 package com.rapibanca.bean;
 
+import com.informa.dto.ClienteRapibancaDTO;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface IloginBean {
-    public boolean loguearUsuario();
+    public boolean loguearUsuario(ClienteRapibancaDTO clienteRapibancaDTO);
 }

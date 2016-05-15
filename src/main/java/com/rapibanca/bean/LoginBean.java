@@ -5,6 +5,7 @@
  */
 package com.rapibanca.bean;
 
+import com.informa.dto.ClienteRapibancaDTO;
 import com.rapibanca.dao.ClienteRapibancaDAO;
 import com.rapibanca.entities.ClienteRapibanca;
 import java.math.BigDecimal;
@@ -16,19 +17,23 @@ import javax.ejb.Stateless;
  */
 @Stateless(mappedName="loginBean")
 public class LoginBean implements IloginBean{
+    
     /**
      * Metodo para hacer el loguin
+     * @param clienteRapibancaDTO
      * @return 
      */
-    public static  void main(String args[]){
+    public boolean loguearUsuario(ClienteRapibancaDTO clienteRapibancaDTO){
         ClienteRapibancaDAO clienteRapibancaDAO = new ClienteRapibancaDAO();
-        ClienteRapibanca clienteRapibanca = clienteRapibancaDAO.findById(new BigDecimal(3456));
+        //ClienteRapibanca clienteRapibanca = clienteRapibancaDAO.findByIdUsuario(new BigDecimal(3456));
+        ClienteRapibanca clienteRapibanca = clienteRapibancaDAO.findByIdUsuario(clienteRapibancaDTO.getIdUsuario());
         System.out.println(clienteRapibanca.getIdUsuario());
-    }
-    public boolean loguearUsuario(){
-        ClienteRapibancaDAO clienteRapibancaDAO = new ClienteRapibancaDAO();
-        ClienteRapibanca clienteRapibanca = clienteRapibancaDAO.findById(new BigDecimal(3456));
-        System.out.println(clienteRapibanca.getIdUsuario());
-        return false;
+        //ClienteRapibancaDTO
+        if(clienteRapibanca.getPassword().equals(clienteRapibancaDTO.getPassword())){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
