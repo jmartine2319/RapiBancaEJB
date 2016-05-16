@@ -8,7 +8,6 @@ package com.rapibanca.bean;
 import com.informa.dto.ClienteRapibancaDTO;
 import com.rapibanca.dao.ClienteRapibancaDAO;
 import com.rapibanca.entities.ClienteRapibanca;
-import java.math.BigDecimal;
 import javax.ejb.Stateless;
 
 /**
